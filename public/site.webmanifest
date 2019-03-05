@@ -1,0 +1,14 @@
+{
+    "name": "Jaime Guaman",
+    "short_name": "Jaime Guaman",
+    "icons": [
+        {
+            "src": "/android-chrome-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        }
+    ],
+    "theme_color": "#4c4564",
+    "background_color": "#4c4564",
+    "display": "standalone"
+}

@@ -1,0 +1,158 @@
+/* You will need this when floating elements */
+@mixin clearfix {
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+/* dunno, a mask creator? */
+@mixin pseudomask {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+
+@mixin fit-viewport-height {
+  height: auto;
+  min-height: 100%;
+}
+
+@mixin fit-viewport-width {
+  width: auto;
+  min-width: 100%;
+}
+
+@mixin collapsable-text {
+  display: block;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+/***************************************
+  Responsive Helper
+  Usage:
+
+  .my-box {
+    padding: 10px;
+    @include for-size(tv) {
+      padding: 80px;
+    }
+    @include for-size(desktop-up) {
+      padding: 20px;
+    }
+    @include for-size(tv) {
+      padding: 80px;
+    }
+  }
+**************************************/
+$phone-upper-boundary: 670px !default;
+$tablet-portrait-upper-boundary: 900px !default;
+$tablet-landscape-upper-boundary: 1024px !default;
+$desktop-upper-boundary: 1280px !default;
+$tv-upper-boundary: 1800px !default;
+
+@mixin for-size($range) {
+  @if $range == phone-only {
+    @media (max-width: #{$phone-upper-boundary - 1}) { @content; }
+  } @else if $range == phone-only-landscape {
+    @media (max-width: #{$phone-upper-boundary - 1}) and (orientation: landscape) { @content; }
+  } @else if $range == tablet-portrait-up {
+    @media (min-width: $phone-upper-boundary) { @content; }
+  } @else if $range == tablet-landscape-up {
+    @media (min-width: $tablet-portrait-upper-boundary) { @content; }
+  } @else if $range == old-desktop-only {
+    @media (min-width: $tablet-landscape-upper-boundary) and (max-width: #{$desktop-upper-boundary - 1}) { @content; }
+  } @else if $range == desktop-up {
+    @media (min-width: $desktop-upper-boundary) { @content; }
+  } @else if $range == tv {
+    @media (min-width: $tv-upper-boundary) { @content; }
+  }
+}
+
+/*
+.my-box {
+  padding: 10px;
+
+  @include for-size(desktop-up) {
+    padding: 20px;
+  }
+}
+*/
+
+/*
+https://css-tricks.com/easing-linear-gradients/
+https://gist.github.com/matthewbeta/0ef11bd907b435f101e09cc6216ad66b
+*/
+@mixin scrimGradient($startColor: black, $direction: 'to bottom') {
+
+  $scrimCoordinates: (
+    0: 1,
+    19: 0.738,
+    34: 0.541,
+    47: 0.382,
+    56.5: 0.278,
+    65: 0.194,
+    73: 0.126,
+    80.2: 0.075,
+    86.1: 0.042,
+    91: 0.021,
+    95.2: 0.008,
+    98.2: 0.002,
+    100: 0
+  );
+
+  $hue: hue($startColor);
+  $saturation: saturation($startColor);
+  $lightness: lightness($startColor);
+  $stops: ();
+
+  @each $colorStop, $alphaValue in $scrimCoordinates {
+    $stop: hsla($hue, $saturation, $lightness, $alphaValue) percentage($colorStop/100);
+    $stops: append($stops, $stop, comma);
+  }
+
+  background-image: linear-gradient(unquote($direction), $stops);
+
+}
+
+@mixin fixed-player() {
+  .jw-title {
+    display: none !important;
+  }
+  .jwplayer:not(.jw-flag-fullscreen),
+  .jw-error:not(.jw-flag-fullscreen),
+  .video-mask {
+    width: auto !important;
+    @include for-size(phone-only) {
+      height: 300px !important;
+    }
+
+    @include for-size(phone-only-landscape) {
+      height: 180px !important;
+    }
+
+    @include for-size(tablet-portrait-up) {
+      height: 500px !important;
+    }
+
+    @include for-size(tablet-landscape-up) {
+      height: 65vh !important;
+    }
+  }
+
+  .jw-error:not(.jw-flag-fullscreen) {
+    width: 100% !important;
+  }
+
+  .video-mask {
+    width: 100% !important;
+    object-fit: cover;
+  }
+}
