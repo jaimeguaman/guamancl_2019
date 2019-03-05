@@ -39,7 +39,7 @@ export default {
     font-family: 'Barlow', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    background-color: $palette-primary-color;
+    background-color: #000;
   }
 
   h1, h2, h3, h4, h5 {
