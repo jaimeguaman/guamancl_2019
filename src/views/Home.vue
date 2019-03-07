@@ -25,7 +25,7 @@
         <h2 class="heading">Experiencia</h2>
         <div class="section-inner">
           <h3 class="title">
-            algunos de los proyectos en los que he participado
+            algunos de los proyectos en los que he colaborado
           </h3>
           <project-list class="widget" :list="projectList"/>
         </div>
