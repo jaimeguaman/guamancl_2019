@@ -53,13 +53,16 @@ export default {
   .dont-feed-the-bots {
     color: rgba($font-light-color, .5);
     text-align: center;
-    width: 100%;
+    width: auto;
     margin: 0;
     padding: 10px;
     text-transform: uppercase;
     position: absolute;
     bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
     z-index: 1;
+    background-color: rgba(black, .9);
   }
 
   .viewport-wrapper{
