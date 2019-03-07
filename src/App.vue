@@ -88,5 +88,8 @@ export default {
 
   .whole-fucking-container {
     height: 100%;
+    width: 100%;
+    overflow-x: hidden;
+    max-width: 100%;
   }
 </style>

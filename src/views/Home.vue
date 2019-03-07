@@ -85,8 +85,6 @@ export default {
   $section-space: 150px;
   .homepage {
     height: 100%;
-    overflow-y: auto;
-
     /* hero */
     .hero {
       color: $font-light-color;
