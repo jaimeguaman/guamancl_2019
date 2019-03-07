@@ -98,6 +98,7 @@ export default {
       background-repeat: no-repeat;
       background-size: cover;
       background-position: center center;
+      position: relative;
       .ups {
         position: absolute;
         top: 20px;

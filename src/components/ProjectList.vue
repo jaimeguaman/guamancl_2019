@@ -23,9 +23,14 @@ export default {
     align-items: center;
     justify-content: center;
     .project {
-      width: 100px;
-      margin-right: 40px;
+      width: 120px;
+      margin-right: 10px;
+      margin-left: 10px;
       margin-bottom: 50px;
+      @include for-size(tablet-portrait-up) {
+        margin-left: 20px;
+        margin-right: 20px;
+      }
       @include for-size(tablet-landscape-up) {
         margin-bottom: 30px;
         width: 170px;
