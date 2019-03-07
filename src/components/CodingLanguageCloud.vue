@@ -21,16 +21,18 @@ export default {
   },
   computed: {
     formattedItems () {
-      return this.list.map(item => {
-        return [item.name, item.percent]
-      })
+      return this.list
+        .filter(item => {
+          return item.name !== 'Other'
+        })
+        .map(item => ([item.name, item.percent]))
     }
   },
   methods: {
     getCssClasses (language = {}) {
       let value = 0
 
-      if (!language.percent || language.name === 'Other') { return 'language language-no-size' }
+      if (!language.percent || language.name.toLowerCase() === 'other') { return 'language language-no-size' }
 
       value = Math.ceil(language.percent) * 2
 
