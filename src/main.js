@@ -1,4 +1,4 @@
-/* global APP_CONFIG */
+/* global APP_CONFIG VERSION */
 import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
@@ -10,7 +10,11 @@ Vue.config.productionTip = false
 if (APP_CONFIG.GA.id) {
   Vue.use(VueMultianalytics, {
     modules: {
-      ga: APP_CONFIG.GA.id
+      ga: {
+        appName: 'Guaman.cl',
+        appVersion: VERSION,
+        trackingId: APP_CONFIG.GA.id
+      }
     },
     routing: {
       vueRouter: router
