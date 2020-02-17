@@ -9,7 +9,9 @@
         </div>
       </div>
     </section>
-    <section class="stats">
+    <section class="stats" v-if="codingLanguageList">
+      pre
+        {{codingLanguageList}}
       <div class="viewport-wrapper">
         <h2 class="heading">Tecnologías</h2>
         <div class="section-inner">

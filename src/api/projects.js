@@ -6,12 +6,12 @@ const PROJECTS = [
   },
   {
     name: 'Trader Social',
-    url: 'https://trader.social',
+    url: 'http://trader.social',
     image: '/img/projects/tradersocial_logo.png'
   },
   {
     name: 'Trader Digital',
-    url: 'https://trader.digital',
+    url: 'http://trader.digital',
     image: '/img/projects/traderdigital_logo.png'
   },
   {
@@ -48,6 +48,11 @@ const PROJECTS = [
     name: 'EstadioCDF',
     url: 'https://estadiocdf.cl',
     image: '/img/projects/estadiocdf_logo.svg'
+  },
+  {
+    name: '13Now (Smart TV)',
+    url: 'https://www.13.cl/now',
+    image: '/img/projects/13now_logo.svg'
   }
 ]
 

@@ -1,34 +1,48 @@
 <template>
   <div class="coding-language-cloud">
-    <vue-word-cloud
-      :words="formattedItems"
-      :color="([, weight]) => weight > 10 ? 'rgba(255,255,255,0.9)' : weight > 5 ? 'rgba(255,255,255,0.5)' : 'rgba(255,255,255,0.3)'"
-      font-family="Barlow"
-      :spacing="0.5"
-    />
+      <wordcloud
+      :data="formattedItems"
+      nameKey="name"
+      valueKey="value"
+      :color="colors"
+      :showTooltip="false"
+      :wordClick="wordClickHandler"
+      :fontSize="[10, 60]"
+      :margin="{top: 0, right: 0, bottom: 0, left: 0}">
+      </wordcloud>
     <p class="notice">*Datos obtenidos gracias al trackeo en tiempo real de <a href="https://wakatime.com/@jaime" target="_blank">Wakatime</a></p>
   </div>
 </template>
 
 <script>
-import VueWordCloud from 'vuewordcloud'
+import Wordcloud from 'vue-wordcloud'
 
 export default {
   name: 'CodingLanguageCloud',
   props: ['list'],
   components: {
-    VueWordCloud
+    Wordcloud
   },
   computed: {
+    colors () {
+      return ['#fff']
+    },
     formattedItems () {
-      return this.list
+      console.log(this.list)
+      const items = this.list
         .filter(item => {
           return item.name !== 'Other'
         })
-        .map(item => ([item.name, item.percent]))
+        .map(item => ({ name: item.name, value: item.percent }))
+
+      console.log(items)
+      return items
     }
   },
   methods: {
+    wordClickHandler () {
+      // noop
+    },
     getCssClasses (language = {}) {
       let value = 0
 
