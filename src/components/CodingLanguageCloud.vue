@@ -28,14 +28,11 @@ export default {
       return ['#fff']
     },
     formattedItems () {
-      console.log(this.list)
       const items = this.list
         .filter(item => {
           return item.name !== 'Other'
         })
         .map(item => ({ name: item.name, value: item.percent }))
-
-      console.log(items)
       return items
     }
   },
